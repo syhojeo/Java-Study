@@ -10,7 +10,6 @@ public class Account {
         this.balance = balance;
     }
 
-
     public String getAno() {
         return ano;
     }

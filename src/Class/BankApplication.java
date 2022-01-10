@@ -17,7 +17,6 @@ public class BankApplication {
             System.out.print("선택> ");
 
 
-
             int selectNo = scanner.nextInt();
             if (selectNo == 1) {
                 createAccount();
