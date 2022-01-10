@@ -9,6 +9,8 @@
 
  */
 
+package studyClass;
+
 public class Singleton {
     //정적 필드를 통해 객체 생성된 Sington 메모리의 주소를 받아온다
     private static Singleton singleton =  new Singleton();
