@@ -12,6 +12,8 @@ List
 
  */
 
+package collectionFramework;
+
 //list 를 사용하기 위한 라이브러리
 import java.util.ArrayList;
 
