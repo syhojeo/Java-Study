@@ -4,6 +4,7 @@
     StringBuffer와 비슷한 자료형으로 StringBuilder가 있으며 사용법은 동일하다
     다만 StringBuffer는 멀티 스레드 환경에서 안전하다는 장점이 있고, StringBuilder는 성능이 우수한 장점이 있다
     때문에 동기화를 고려할 필요가 없는 상황에서는 StringBuilder를 사용하는것이 바람직하다
+
 */
 
 public class String_Buffer_03 {
