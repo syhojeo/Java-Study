@@ -1,5 +1,6 @@
 //hello world.java 파일은 하나지만 여러개의 클래스를 만들 수 있다.
 //클래스명과 파일명이 동일할 경우 해당 클래스에 public 을 붙여주어야 한다.
+package helloJava;
 
 public class HelloWorld_00 {
     public static void main(String[] args){

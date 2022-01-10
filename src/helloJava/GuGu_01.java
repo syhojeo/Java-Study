@@ -1,4 +1,5 @@
 //구구단 만들기 (메소드와 객체 생성)
+package helloJava;
 
 public class GuGu_01 {
     public static void dan(int n){
