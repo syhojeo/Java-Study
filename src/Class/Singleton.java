@@ -6,6 +6,7 @@
 
     실체 객체 생성은 heap 에 되지만
     static 참조 변수로 이 주소를 받아와 다른 메소드들에 제공한다.
+
  */
 
 public class Singleton {
