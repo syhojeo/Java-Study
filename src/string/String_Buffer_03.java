@@ -7,6 +7,8 @@
 
 */
 
+package string;
+
 public class String_Buffer_03 {
     //append - 문자열 추가하기
     public static void append(){
