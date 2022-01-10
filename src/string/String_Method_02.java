@@ -30,7 +30,7 @@ public class String_Method_02 {
     }
     //4. substring() - 문자열 중 특정 부분을 추출 경우 사용 (index 번호로 추출 문자열 명시)
     public static void substring(){
-        String a = "Hello Java";
+        String a = "helloJava";
 
         System.out.println("\n\"substring Method\"");
         System.out.println(a.substring(0,4)); // a 문자열의 index 0~4(Hell)을 추출
@@ -40,7 +40,7 @@ public class String_Method_02 {
     }
     //5. toUpperCase, toLowerCase - 문자열의 소문자를 대문자로 변환, 대문자를 소문자로 변환
     public static void to_Upper_Lower_case(){
-        String a = "Hello Java";
+        String a = "helloJava";
 
         System.out.println("\n\"toUpperCase, toLowercase Method\"");
         System.out.println(a.toUpperCase()); // HELLO JAVA
