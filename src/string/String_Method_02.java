@@ -1,4 +1,5 @@
 //문자열 관련 메소드
+package string;
 
 public class String_Method_02 {
     //1. equals() 메소드 : 두문자열이 같은지 다른지 비교하여 true , false (boolean 자료형) 값을 리턴한다
