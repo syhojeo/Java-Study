@@ -1,3 +1,7 @@
+//클래스를 이용한 ATMService 구현
+
+package studyClass;
+
 import java.util.Scanner;
 
 public class BankApplication {

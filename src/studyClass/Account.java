@@ -1,3 +1,6 @@
+//BankApplication 의 참조 클래스
+package studyClass;
+
 public class Account {
 
     private String ano;
