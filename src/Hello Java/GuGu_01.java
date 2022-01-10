@@ -13,6 +13,7 @@ public class GuGu_01 {
         System.out.println(n*8);
         System.out.println(n*9);
          */
+
         for (int i = 1; i < 10; i++){
             System.out.println(n * i);
         }

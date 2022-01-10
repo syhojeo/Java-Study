@@ -6,6 +6,7 @@ public class HelloWorld_00 {
         System.out.println("Hello World");
     }
 }
+
 /*
     public: 메소드의 접근제어자 (누구나 이 메소드에 접근 가능하다는 의미)
     static: 메소드에 static이 지정되어 있는 경우 이 메소드는 인스턴스 생성없이 실행 할 수 있다는 의미
