@@ -12,6 +12,8 @@ HashMap은 순서에 상관없지만 LinkedHashMap과 TreeMap은 데이터 입�
 
  */
 
+package collectionFramework;
+
 import java.util.HashMap;
 
 public class Map_04 {
