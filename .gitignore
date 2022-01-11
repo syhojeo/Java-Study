@@ -5,3 +5,4 @@ out/*
 Java-Study.iml
 src/Test.java
 src/TestClass.java
+.idea/uiDesigner.xml
