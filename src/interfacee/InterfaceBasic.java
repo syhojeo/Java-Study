@@ -1,6 +1,13 @@
+//인터페이스 작성법
 package interfacee;
 
 public interface InterfaceBasic {
+    /*
+        인터페이스의 모든 메소드는 기본적으로 public 접근제한자를 갖기 때문에 구현 클래스에서 작성할 때
+        public 보다 더 강한 접근제한자 (default, private 등)를 사용할 수 없다. 즉, 구현클래스에선 public 을 생략해선 안된다
+    */
+
+
     /*
         상수 필드
         인터페이스는 객체 사용 설명서이므로 런타임 시 데이터를 지정할 수 있는 필드를 선언할 수 없다.
