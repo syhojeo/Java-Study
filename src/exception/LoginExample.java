@@ -23,7 +23,7 @@ public class LoginExample {
     //login메소드에서 NotExistIDException과 WrongPasswordException 이 발생했을때
     // 이것에 대한 예외처리를 login 메소드를 호출한 곳에서 처리하도록 한다 (throws 설정)
     public static void login(String id, String password) throws NotExistIDException, WrongPasswordException{
-
+                                                            //thorws Exception으로 한번에 떠넘기기도 가능
         //id가 "blue"가 아니라면 NotExistIDException 발생시킴
         if (!id.equals("blue")) {
             //예외 객체를 생성하여 예외를 발생시킴
