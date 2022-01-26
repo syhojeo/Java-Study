@@ -26,9 +26,9 @@ String은 문자열의 추출, 비교, 찾기, 분리, 변환등과 같은 다�
 
 ###2.0 자주 사용하는 메소드
 
-![](../../../image/화면 캡처 2022-01-20 163753.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-20%20153117.png)
 
-![](../../../image/화면 캡처 2022-01-20 163819.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-20%20163819.png)
 
 ###2.1 문자 추출 charAt()
 매개값으로 주어진 인덱스의 문자를 리턴 여기서 인덱스는 실제 배열 인덱스 수와 같다(문자열길이 -1 까지의 번호)
@@ -53,7 +53,7 @@ String은 문자열의 추출, 비교, 찾기, 분리, 변환등과 같은 다�
 
 그러나 strVar1은 new 연산자로 생성된 다른 String 객체를 참조한다
 
-![](../../../image/화면 캡처 2022-01-20 164701.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-20%20164701.png)
 
 때문에 이 경우 == 연산자를 사용하여 비교하는것이 아니라 String.equals() 메소드를 사용하여 문자열을 직접 비교한다
 
