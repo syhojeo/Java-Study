@@ -534,3 +534,215 @@ execute(): 작업처리 결과를 받지 못하고, 작업처리 도중 예외�
 
 submit(): 작업처리 결과를 받을 수 있도록 Future를 리턴, 작업 처리 도중 예외가 발생하더라도 스레드는 종료되지않고, 다음작업을
 위해 재 사용된다 스레드의 생성 오버헤더를 줄이기 위해서 submit() 을 사용하는것을 권장한다
+
+###8.3 블로킹 방식의 작업 완료 통보 (submit() 메소드의 작업 결과 리턴)
+execute() 방식과 다르게 submit() 방식의 경우 작업 처리 요청으로 준 Runnable 또는 Callable 작업을
+스레드 풀의 작업 큐에 저장하고 즉시 Future 객체를 리턴한다
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/1.png)
+
+Future 객체는 작업 결과가 아니라 **작업이 완료될때까지 기다렸다가(블로킹) 작업이 종료되면 최종결과를 얻는다**
+
+Future 객체가 가지고 있는 작업완료 결과 리턴 메소드
+![](https://github.com/syhojeo/Java-Study/blob/main/image/2.png)
+
+작업 처리 완료 후 리턴 타입은 submit() 메소드의 매개변수에 따라 다르게 오버로드 된다
+
+```java
+    submit(Runnable task) // future.get() -> null 리턴
+    submit(Runnable task, Integer result) // future.get() -> int 타입 값 리턴
+    submit(Callable<String> task) // future.get() -> String 타입 값 리턴
+```
+
+다만 Future 를 이용한 작업 완료 통보에서 주의할 점은 작업을 처리하는 스레드가 작업을 완료하기 전까지는 get() 메소드가
+블로킹되므로 다른 코드를 실행 할 수 없다. 때문에 get() 메소드를 호출하는 스레드는 새로운 스레드이거나 스레드풀의 또 다른
+스레드가 되어야 한다
+
+```java
+    //새로운 스레드를 생성해서 호출
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                future.get();
+                } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }).start();
+    
+    //스레드 풀의 스레드가 호출
+    //submit을 통한 스레드풀에서의 future.get() 작업 처리 요청
+    executorService.submit(new Runnable() {
+        @Override
+        try {
+            future.get();
+            } catch (Exception e)
+            e.printStackTrace();
+        }
+    });
+```
+
+Future 객체는 작업 결과를 얻기 위한 get()메소드 이외에도 cancel(), isCancelled(), isDone() 의 메소드를 제공한다
+```java
+    /*
+        작업 처리가 진행 중일 경우 취소시킴
+        작업이 시작되기 전이라면 true를 리턴하지만, 작업이 진행중 이라면 mayInterruptIfRunning 값이 true 일 경우에만
+        스레드를 interrupt 한다
+        작업이 완료되었을 경우 또는 어떤 이유로 인해 취소될 수 없다면 false를 리턴한다
+     */
+    boolean cancel(boolean mayInterruptIfRunning
+    //작업이 완료되기 전에 작업이 취소되었을 경우 에만 true 리턴
+    boolean isCancelled()
+    //메소드 작업이 정상적, 예외, 취소 등 어떤 이유에서건 작업이 완료되었다면 true를 리턴    
+    boolean isDone()
+```
+
+####리턴값이 없는 작업 완료 통보
+```java
+    Runnable task = new Runnable() {
+        @Override
+        public void run() {
+            //스레드가 처리할 작업 내용
+        }
+    };
+
+    //작업 요청할때 매개값을 Runnable 타입으로 주면 리턴값이 없는 작업 완료 통보가 된다
+    Future future = executorService.submit(task);
+```
+
+작업처리가 정상적으로 완료되었다면 Future.get() 메소드는 null을 리턴하지만 스레드가 작업처리도중 interrupt 되었다면
+InterruptException 이 발생하고, 예외가 발생한다면 ExecutionException 을 발생시킨다 
+
+때문에 이에따른 예외처리가 필요하다
+```java
+    try {
+        future.get();
+    } catch (InterruptException e) {
+        //작업 처리 도중 예외가 발생된 경우 실행할 코드
+    }
+```
+
+이를통해 submit 에 Runnable 타입 매개변수를 넣어도 future 객체를 리턴받는 이유를 알 수 있는데
+
+Future.get() 메소드를 try - catch를 통해
+사용함으로써 작업 완료 통보값이 없더라도 작업이 interrupt없이 정상적으로 종료했는지, 작업 도중에 예외가 발생했는지를
+확인할 수 있다는데 의미가 있다
+
+####리턴값이 있는 작업 완료 통보
+작업 처리 결과를 얻어야 한다면 submit의 매개값으로 Callabe 객체를 넣어주면된다
+```java
+    Callable<T> task = new Callable<T>() {
+        @Override
+        public T call() throws Exception {
+            //스레드가 처리할 작업 내용
+            return T;
+        }   
+    }
+    
+    Future<T> future = executorService.submit(task)
+
+    try {
+        //get() 메소드는 블로킹 되고, 작업이 완료되는 순간 블로킹이 해제되며 T값을 리턴한다
+        T result = future.get();
+      
+        //다중 catch문  
+    } catch (InterruptedException e) {
+        //작업 처리도중 스레드가 interrupt 될 경우 실행할 코드
+    } catch (ExecutionException e) {
+        //작업 처리 도중 예외가 발생한 경우 실행할 코드
+    }
+```
+
+#### 작업 처리 결과를 외부 객체에 저장
+작업 처리의 결과를 외부 객체에 저장한다 이때 이 외부객체는 공유객체가 되어, 두개 이상의 스레드 작업을 취합할 목적으로 이용된다
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/3.png)
+
+이를 위해 ExecutorService의 submit 메소드를 사용한다
+
+```java
+    //V reusult : 외부객체에 저장할 작업 처리 결과값
+    submit(Runnable task, V result)
+
+    //result 객체 생성
+    Result result = ...;
+    //작업 객체 생성
+    Runnable task = new Task(result);
+    //task 작업 처리를 하고, 작업처리 결과를 Result 형 객체에 저장해서 리턴해준다
+    Future<Result> future = executorService.submit(task, result);
+    result = future.get();
+```
+
+작업 객체는 Runnable 구현 클래스로 생성하는데, 주의할 점은 스레드에서 결과를 저장하기 위해 외부 Result 객체를 
+사용해야 하므로 생성자를 통해 Result 객체를 주입받도록 해야 한다 
+
+(**작업객체의 생성자로 Result 객체를 받아야함**)
+
+```java
+    class Task implements  Runnable {
+    Result result;
+    Task(Result result) {
+        this.result = result;
+    }
+    @Override
+    public void run() {
+        //작업 코드
+        //처리 결과를 result에 저장
+    }
+}
+```
+
+#### 작업 완료 순으로 통보
+작업은 양과 스레드 스케줄링에 따라 먼저 요청된 작업도 늦게 완료될 수 있다.
+
+여러 개의 작업들이 순차적으로 처리될 필요성이 없고, 처리 결과도 순차적으로 이용할 필요가 없다면 작업 처리가 완료된 것부터
+결과를 얻어 이용한다
+
+#### CompletionService : 작업 처리가 완료된 것만 통보 받는 방법으로 처리 완료된 작업을 가져오는 poll() 과 take() 메소드를 제공
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/4.png)
+
+CompletionService 구현 클래스는 ExecutorCompletionService<V> 이고, 객체를 생성할 때 생성자 매개값으로
+ExecutorService를 제공하면 된다.
+
+```java
+    ExecutorService executorService = Executor.newFixedThreadPool(
+        Runtime.getRuntime().availableProcessors()
+    );
+    //CompletionService를 사용하기 위해 ExecutorService를 생성자 매개값으로 제공한다
+    //ExecutorService가 CompletionService의 구현객체이기 때문이다 
+    CompletionService<V> completionService = new ExecutorCompletionService<V> (
+        executorService
+    );
+
+    /*
+    poll()과 take() 메소드를 이용해서 처리 완료된 작업의 Future를 얻으려면 
+    CompletionService의 submit() 메소드로 작업처리 요청을 해야한다
+    completionService.submit(Callable <V> task);
+    completionService.submit(Runnable task, V result);
+    */
+    executorService.submit(new Runnable() {
+        @Override
+        public void run() {
+            while(true) {
+                try {
+                    //take()를 통해 완료된 작업의 Future를 가져옴 (완료된 작업이 없다면 완료될때까지 블로킹)
+                    Future<Integer> future = completionService.take();
+                    int value = future.get();
+                    System.out.println("[처리 결과] " + value);
+                    } catch (Exception e) {
+                    break;
+                    }      
+                }       
+        }
+    });
+```
+
+#### 콜백 방식의 작업 완료 통보
+콜백이란 어플리케이션이 스레드에게 작업 처리를 요청한 후, 스레드가 작업을 완료하면 특정 메소드를 자동실행하는 기법이다
+
+이때 자동 실행되는 메소드를 콜백 메소드라 한다
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/5.png)
+
