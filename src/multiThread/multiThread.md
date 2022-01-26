@@ -94,7 +94,7 @@ Runnable을 가진 객체를 만들지 않고, Thread클래스를 상속하여 �
 싱글코어 CPU를 이용한 멀티 스레드 작업은 병렬적으로 실행되는것처럼 보이지만 워낙에 작업속도가 빨라서 그렇게 보이는것이지
 실제로는 번갈아가며 실행하는 동시성 작업이다.
 
-!(https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20130834.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20130834.png)
 
 ###3.1 스레드 스케줄링
 
