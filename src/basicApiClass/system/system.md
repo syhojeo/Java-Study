@@ -76,7 +76,7 @@ ex) 운영체제의 종류, 자바프로그램을 실행시킨 사용자 아이�
 
 System property는 key 와 value로 구성되어 있다.
 
-![](../../../image/화면 캡처 2022-01-20 121001.png)
+![](.https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-20%20121001.png)
 
 ```java
     String value = System.getProperty(String key);
