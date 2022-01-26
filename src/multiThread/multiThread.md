@@ -94,7 +94,7 @@ Runnable을 가진 객체를 만들지 않고, Thread클래스를 상속하여 �
 싱글코어 CPU를 이용한 멀티 스레드 작업은 병렬적으로 실행되는것처럼 보이지만 워낙에 작업속도가 빨라서 그렇게 보이는것이지
 실제로는 번갈아가며 실행하는 동시성 작업이다.
 
-!(../../image/화면 캡처 2022-01-21 130834.png)
+!(https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20130834.png)
 
 ###3.1 스레드 스케줄링
 
@@ -151,7 +151,7 @@ Runnable을 가진 객체를 만들지 않고, Thread클래스를 상속하여 �
 다른 스레드는 해당 critical section 뿐만아니라 모든 critical section 에 진입할 수 없다
 
 ##4. 스레드 상태
-![](../../image/화면 캡처 2022-01-21 152042.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20152042.png)
 
 스레드의 상태는 객체 생성, 실행, 실행 대기, 일시 정지, 종료 5가지의 상태가 존재한다
 
@@ -165,11 +165,11 @@ run()메소드가 종료되면 종료상태로 들어간다
 ##5. 스레드 상태 제어
 ### 스레드 상태 관계
 
-![](../../image/화면 캡처 2022-01-21 154440.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20154440.png)
 
 ###스레드 상태 제어 메소드
 
-![](../../image/화면 캡처 2022-01-21 154518.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20154518.png)
 
 
 ###5.1 주어진 시간동안 일시정지 sleep()
@@ -300,7 +300,7 @@ notify를 실행된다면 소멸하지 않고 계속해서 wait)
 
 2. interrupt를 이용한 try-catch 블록
 
-![](../../image/화면 캡처 2022-01-24 170124.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-24%20170124.png)
 
 다만 interrupt() 메소드가 실행되면 즉시 InterruptException 예외가 발생하지 않고, 스레드가 미래에 일시 정지
 상태가 되면 InterruptedException 예외가 발생한다
@@ -410,9 +410,9 @@ InterruptedException에 대한 예외 처리를 하지 않는다
 
 ####TrheadGroup 의 주요 메소드
 
-![](../../image/화면 캡처 2022-01-25 141712.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20141712.png)
 
-![](../../image/화면 캡처 2022-01-25 141734.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20141734.png)
 
 ##8 스레드풀
 
@@ -427,13 +427,13 @@ InterruptedException에 대한 예외 처리를 하지 않는다
 자바에서 스레드풀을 사용할 수 있도록 java.util.concurrent 패키지에서 Executors(클래스)의 다양한 정적 메소드를 이용하여
 ExcutorService(인터페이스) 구현 객체를 만들 수 있는데 이것이 스레드풀이다
 
-![](../../image/화면 캡처 2022-01-25 150002.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20150002.png)
 
 ### 8.1 스레드풀 생성 및 종료
 
 인터페이스인 ExecutorService 구현 객체는  Executors 클래스의 두가지 메소드 중 하나를 이용해서 생성할 수 있다
 
-![](../../image/화면 캡처 2022-01-25 162120.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20162120.png)
 
 초기 스레드: ExecutorService 객체가 생성될 때 기본적으로 생성되는 스레드 수
 코어스레드: 스레드 수가 증가된 후 사용되지 않는 스레드를 스레드 풀에서 제거할 때 최소한 유지해야 할 스레드 수
@@ -485,7 +485,7 @@ ExcutorService(인터페이스) 구현 객체를 만들 수 있는데 이것이 
 
 ExecutorService는 종료와 관련해 메소드를 제공하고 있다
 
-![](../../image/화면 캡처 2022-01-25 162219.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20162219.png)
 
 ```java
     //남아있는 작업을 마무리하고 스레드 풀을 종료할 때에는 shutdown()을 일반적으로 호출하고
@@ -527,7 +527,7 @@ ExecutorService 의 작업 큐에 Runnable 또는 Callable 객체를 넣는 행�
 
 ExecutorService의 작업처리 요청 관련 메소드
 
-![](../../image/화면 캡처 2022-01-25 163343.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20163343.png)
 
 ####execute()와 submit() 메소드의 차이점
 execute(): 작업처리 결과를 받지 못하고, 작업처리 도중 예외가 발생하면 스레드가 종료되고 해당 스레드는 스레드풀에서 제거된다
