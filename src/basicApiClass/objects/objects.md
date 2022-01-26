@@ -2,7 +2,7 @@
 java.util 패키지에 속하여 있으며 **객체 비교, 해시코드 생성, null 여부, 객체 문자열 리턴**등의 연산을
 수행하는 정적 메소드들로 구성된 Object 의 유틸리티 클래스이다
 
-![](../../../image/화면 캡처 2022-01-19 143617.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-19%20143617.png)
 
 
 ## 1. 객체 비교 (Compare(T a, T b, Comparator\<T>c))
@@ -58,13 +58,13 @@ null이면 모두 NullPointerException을 발생
 
 매개변수에 따라 3가지의 오버로드를 가지고 있다
 
-![](../../../image/화면 캡처 2022-01-19 165614.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-19%20165614.png)
 
 
 ## 5. 객체 문자 정보(toString())
 객체의 문자 정보를 리턴하는데 두가지의 오버로딩을 가지고 있다
 
-![](../../../image/화면 캡처 2022-01-19 165814.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-19%20165814.png)
 
 첫번째 매개값이 not null 이면 toString()으로 얻은 값을 리턴하고, 
 
