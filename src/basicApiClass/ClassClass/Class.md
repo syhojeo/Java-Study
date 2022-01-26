@@ -68,7 +68,7 @@ newInstance로 부터 생성되어 리턴된 객체는 타입이 Object 이기 �
 
 리턴된 객체의 클래스 타입을 모르기 때문에 interface를 사용하여 이를 해결한다
 
-![](../../../image/화면 캡처 2022-01-20 153117.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-20%20153117.png)
 
 위와 같이 Action 인터페이스와 구현클래스인 SendAction, ReceiveAction 이 있다고 가정하고
 
