@@ -21,7 +21,7 @@ StringTokenizer 객체를 생성할 떄 첫 번째 매개값으로 전체 문자
 ```
 
 StringTokenizer의 메소드
-![](../../../image/화면 캡처 2022-01-20 174710.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-20%20174710.png)
 
 ```java
     st = new StringTokenizer(text, "/");
