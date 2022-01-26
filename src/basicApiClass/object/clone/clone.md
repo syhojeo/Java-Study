@@ -9,7 +9,7 @@
 ### 얕은 복제(thin clone)
 단순히 필드값만을 복사해서 객체를 복사하는 방법
 
-![](../../../../image/화면 캡처 2022-01-19 120106.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-19%20120106.png)
 
 Object의 clone() 메소드는 자신과 동일한 필드값을 가진 얕은 복제된 객체를 리턴한다
 
@@ -21,6 +21,6 @@ Object의 clone() 메소드는 자신과 동일한 필드값을 가진 얕은 �
 
 때문에 이를 보완하기 위해 참조하고 있는 객체 또한 복제하는 깊은 복제를 사용한다
 
-![](../../../../image/화면 캡처 2022-01-19 124053.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-19%20124053.png)
 
 깊은 복제를 하기 위해서는 Object의 clone() 메소드를 재정의 해서 참조객체를 복제하는 코드를 직접 작성해야 한다.
