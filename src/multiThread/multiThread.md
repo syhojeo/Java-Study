@@ -746,3 +746,34 @@ ExecutorService를 제공하면 된다.
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/5.png)
 
+콜백방식은 작업 처리가 완료되면 자동적으로 콜백 메소드가 실행되어 결과를 알 수 있기 때문에 
+작업처리를 요청한 후 결과를 기다릴 필요 없이 다른 기능을 수행할 수 있다.
+
+Runnable 구햔 클래스를 작성할 때 콜백기능을 구현할 수 있다
+
+```java
+    //V = 결과값 타입, A = 첨부값 타입
+    CompletionHandler<V, A> callback = new CompletionHandler<V, A>() {
+        @Override
+        //작업을 정상 처리 완료했을 때 호출되는 콜백 메소드
+        public void completed(V result, A attachment){
+        }
+        @Override
+        //작업 처리 도중 예외가 발생했을 때 호출되는 콜백 메소드
+        public void failed(Throwable exc, A attachment) {
+        }
+    }
+
+    Runnable task = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                //작업 처리
+                V result = ..;
+                callback.completed(result, null); //작업을 정상 처리했을 때 호출
+                }catch(Exception e) {
+                    callback.failed(e, null); //예외가 발생했을 때 호출
+                }       
+            }
+    }
+```
