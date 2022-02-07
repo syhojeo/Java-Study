@@ -13,7 +13,7 @@ public class Child extends Parents{
     Child(String model, String color, int channel) {
         //부모 생성자는 적어주지 않으면 생략되어 호출되며, 항상 자식생성자 첫줄에 존재한다.
         //만약 부모클래스의 생성자가 매개값을 가지고 있다면, 자식클래스에서 매개값을 넣어서 부모 생성자를 호출해야 한다.
-        super(); //부모생성자 호출
+        super(model); //부모생성자 호출
 
         this.model = model; //상속받은 필드
         this.color = color; //상속받은 필드

@@ -10,7 +10,9 @@ public class Parents {
     String color;
 
     //생성자
-
+    public Parents (String model) {
+        this.model = model;
+    }
     //메소드
     void powerOn() {System.out.println("전원을 켭니다.");}
 }
