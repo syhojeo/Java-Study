@@ -8,7 +8,7 @@
 어플리케이션이 종료되지 않는다
 
 ## 작업 스레드 생성과 실행
-###1. Thread 클래스로 부터 직접 생성
+### 1. Thread 클래스로 부터 직접 생성
 
 ```java
     //Thread 클래스를 사용하여 직접 생성하려면 Runnable 타입을 매개값으로 갖는 생성자를 호출해야한다
@@ -70,7 +70,7 @@ Runnable을 가진 객체를 만들지 않고, Thread클래스를 상속하여 �
     thread.start();
 ```
 
-##2. 스레드의 이름
+## 2. 스레드의 이름
 메인 스레드는 main이라는 이름이 있고, 직접 생성한 스레드는 "Thread-n" 이라는 이름으로 설정
 
 ```java
@@ -84,7 +84,7 @@ Runnable을 가진 객체를 만들지 않고, Thread클래스를 상속하여 �
     Thread thread = Thread.currentThread();
 ```
 
-##3. 스레드 우선순위
+## 3. 스레드 우선순위
 멀티스레드는 동시성 또는 병렬성으로 실행된다
 
 동시성: 하나의 코어에서 멀티 스레드가 번갈아가며 실행하는 성질
@@ -96,7 +96,7 @@ Runnable을 가진 객체를 만들지 않고, Thread클래스를 상속하여 �
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20130834.png)
 
-###3.1 스레드 스케줄링
+### 3.1 스레드 스케줄링
 
 쓰레드의 개수가 코어의 수보다 많을경우, 스레드를 어떤 순서에 의해 동시성으로 실행할 것인가를 결정해야하는데 이것을
 **스레드 스케줄링** 이라고한다 스레드 스케줄링에 의해 스레드들은 아주 짧은 시간에 번갈아가면서 run() 메소드를 조금씩
@@ -123,7 +123,7 @@ Runnable을 가진 객체를 만들지 않고, Thread클래스를 상속하여 �
     thread.setPriority(Thread.MIN_PRIORITY); //1
 ```
 
-##3. 동기화 메소드와 동기화 블록
+## 3. 동기화 메소드와 동기화 블록
 
 두개 이상의 스레드가 하나의 객체를 사용할 때 동시에 사용해서 문제가 생기는데 이를 임계영역(critical section) 설정을
 통해서 제어해줘야한다
@@ -150,7 +150,7 @@ Runnable을 가진 객체를 만들지 않고, Thread클래스를 상속하여 �
 하나의 스레드가 critical section에 진입했다면 그 스레드가 critical section을 빠져나올때까지
 다른 스레드는 해당 critical section 뿐만아니라 모든 critical section 에 진입할 수 없다
 
-##4. 스레드 상태
+## 4. 스레드 상태
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20152042.png)
 
 스레드의 상태는 객체 생성, 실행, 실행 대기, 일시 정지, 종료 5가지의 상태가 존재한다
@@ -162,17 +162,17 @@ Thread.start() 메소드가 사용되면 스레드 스케줄링에 의해서 실
 run()메소드가 종료되면 종료상태로 들어간다
 
 몇몇 상황에 따라 일시정지 상태가 되기도 한다
-##5. 스레드 상태 제어
+## 5. 스레드 상태 제어
 ### 스레드 상태 관계
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20154440.png)
 
-###스레드 상태 제어 메소드
+### 스레드 상태 제어 메소드
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-21%20154518.png)
 
 
-###5.1 주어진 시간동안 일시정지 sleep()
+### 5.1 주어진 시간동안 일시정지 sleep()
 Thread.sleep() 메소드를 호출한 스레드는 주어진 시간동안 일시정지 상태가 되고, 다시 실행대기 상태로 돌아간다
 매개변수로는 밀리 세컨드 단위의 시간을 넣어주면 된다
 ```java
@@ -184,7 +184,7 @@ Thread.sleep() 메소드를 호출한 스레드는 주어진 시간동안 일시
 ```
 
 
-###5.2 다른 스레드에게 실행 양보 yield()
+### 5.2 다른 스레드에게 실행 양보 yield()
 for 문이나 while문을 통한 무의미한 반복을 하는경우 스레드에 실행대기 상태를 부여하고 다른 스레드에게 
 동일한 혹은 높은 우선순위를 할 수 있도록 만들어주는 메소드이다
 
@@ -211,7 +211,7 @@ for 문이나 while문을 통한 무의미한 반복을 하는경우 스레드�
                     //작업이 종료되면 일시정지에서 풀려 다음 코드를 실행하게 된다
 ```
 
-###5.4 스레드 간 협업 wait(), notify() , notifyAll()
+### 5.4 스레드 간 협업 wait(), notify() , notifyAll()
 두개 혹은 여러개의 스레드에서 하나의 critical section에 대한 정확한 교대작업을 위해서 wait, notify 메소드들을 사용한다
 
 wait() : 스레드가 일시정지 상태가 되고, Synchronized 의 락을 해제시킨다
@@ -336,7 +336,7 @@ isInterrupted는 인스턴스 메소드로 현재 스레드가 interrupted 되�
 }
 ```
 
-##6 데몬스레드
+## 6. 데몬스레드
 데몬스레드는 주 스레드의 작업을돕는 보조적인 역할을 수행하는 스레드이다 주 스레드가 종료되면 강제적으로 종료된다
 적용 예로는 워드프로세서의 자동 저장, 미디어 플레어이어의 동영상 및 음악 재생, 가비지 컬렉터 등이 있다.
 
@@ -359,7 +359,7 @@ IllegalThreadStateException 이 발생하지 않는다
 #### isDaemon()
 데몬스레드일 경우 true 리턴한다
 
-##7 스레드 그룹
+## 7 스레드 그룹
 관련된 스레드를 묶어서 관리할 목적으로 이용된다
 
 JVM의 경우 JVM이 실행되면 system 스레드 그룹을 만들고, JVM 운영에 필요한 스레드들을 생성해서 system 스레드 그룹에 포함시킨다
@@ -408,13 +408,13 @@ InterruptedException에 대한 예외 처리를 하지 않는다
 
 따라서 interrupt 신호는 한번 주더라도 스레드 그룹의 내부 스레드들에 대한 안전한 종료를 위해서는 개별적인 예외처리가 필요하다
 
-####TrheadGroup 의 주요 메소드
+#### TrheadGroup 의 주요 메소드
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20141712.png)
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20141734.png)
 
-##8 스레드풀
+## 8 스레드풀
 
 스레드 풀은 작업처리에 사용되는 스레드를 제한된 개수만큼 정해 놓고, 작업 Queue에 들어오는 작업들을 하나씩 스레드가 맡아
 처리하는 방법이다
@@ -439,7 +439,7 @@ ExcutorService(인터페이스) 구현 객체를 만들 수 있는데 이것이 
 코어스레드: 스레드 수가 증가된 후 사용되지 않는 스레드를 스레드 풀에서 제거할 때 최소한 유지해야 할 스레드 수
 최대 스레드: 스레드 풀에서 관리하는 최대 스레드 수
 
-####newCachedThreadPool()
+#### newCachedThreadPool()
 스레드 개수보다 작업 개수가 많을때 새 스레드를 생성시켜 작업을 처리한다
 
 이론적으로는 int값이 가질 수 있는 최대값 만큼 스레드가 추가되지만, 운영체제의 성능과 상황에 따라 달라진다
@@ -451,7 +451,7 @@ ExcutorService(인터페이스) 구현 객체를 만들 수 있는데 이것이 
     
 ```
 
-####newFixedThreadPool(int nThreads)
+#### newFixedThreadPool(int nThreads)
 코어 스레드 수를 매개변수로 줄 수 있고, 스레드 개수보다 작업개수가 많으면 새 스레드를 생성시키고 작업을 처리한다
 이 스레드 풀은 스레드가 작업을 처리하지 않고 놀고 있더라도 스레드 개수가 줄지 않는다
 
@@ -462,7 +462,7 @@ ExcutorService(인터페이스) 구현 객체를 만들 수 있는데 이것이 
     );
 ```
 
-####Custom ThreadPool 생성
+#### Custom ThreadPool 생성
 만약 두가지 메소드를 사용하지 않고, 코어 스레드 개수와 최대 스레드 개수를 설정하고 싶다면 직접 ThreadPoolExecutor 객체를 
 생성하면 된다
 
@@ -494,7 +494,7 @@ ExecutorService는 종료와 관련해 메소드를 제공하고 있다
     executorService.shutdownNow();
 ```
 
-###8.2 작업 생성과 처리 요청
+### 8.2 작업 생성과 처리 요청
 #### 작업생성
 하나의 작업은 Runnable 또는 Callable 구현클래스로 표현한다
 ```java
@@ -522,20 +522,20 @@ ExecutorService는 종료와 관련해 메소드를 제공하고 있다
 
 스레드 풀의 스레드는 작업 큐에서 Runnable 또는 Callable 객체를 가져와 run()과 call() 메소드를 실행한다
 
-####작업 처리 요청
+#### 작업 처리 요청
 ExecutorService 의 작업 큐에 Runnable 또는 Callable 객체를 넣는 행위
 
 ExecutorService의 작업처리 요청 관련 메소드
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-01-25%20163343.png)
 
-####execute()와 submit() 메소드의 차이점
+#### execute()와 submit() 메소드의 차이점
 execute(): 작업처리 결과를 받지 못하고, 작업처리 도중 예외가 발생하면 스레드가 종료되고 해당 스레드는 스레드풀에서 제거된다
 
 submit(): 작업처리 결과를 받을 수 있도록 Future를 리턴, 작업 처리 도중 예외가 발생하더라도 스레드는 종료되지않고, 다음작업을
 위해 재 사용된다 스레드의 생성 오버헤더를 줄이기 위해서 submit() 을 사용하는것을 권장한다
 
-###8.3 블로킹 방식의 작업 완료 통보 (submit() 메소드의 작업 결과 리턴)
+### 8.3 블로킹 방식의 작업 완료 통보 (submit() 메소드의 작업 결과 리턴)
 execute() 방식과 다르게 submit() 방식의 경우 작업 처리 요청으로 준 Runnable 또는 Callable 작업을
 스레드 풀의 작업 큐에 저장하고 즉시 Future 객체를 리턴한다
 
@@ -598,7 +598,7 @@ Future 객체는 작업 결과를 얻기 위한 get()메소드 이외에도 canc
     boolean isDone()
 ```
 
-####리턴값이 없는 작업 완료 통보
+#### 리턴값이 없는 작업 완료 통보
 ```java
     Runnable task = new Runnable() {
         @Override
@@ -629,7 +629,7 @@ Future.get() 메소드를 try - catch를 통해
 사용함으로써 작업 완료 통보값이 없더라도 작업이 interrupt없이 정상적으로 종료했는지, 작업 도중에 예외가 발생했는지를
 확인할 수 있다는데 의미가 있다
 
-####리턴값이 있는 작업 완료 통보
+#### 리턴값이 있는 작업 완료 통보
 작업 처리 결과를 얻어야 한다면 submit의 매개값으로 Callabe 객체를 넣어주면된다
 ```java
     Callable<T> task = new Callable<T>() {
