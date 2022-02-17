@@ -1,4 +1,4 @@
-# [컬렌션 프레임 워크](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework)
+# 컬렌션 프레임 워크
 
 자료구조를 바탕으로 객체들을 효율적으로 추가, 삭제, 검색 할 수 있도록 java.util 패키지에 컬렉션과
 관련된 인터페이스와 클래스들이 포함되어있다. 이것들을 총칭한것을 **컬렉션 프레임워크**라고 한다
@@ -12,7 +12,7 @@ Map의 경우 따로 정의되어 있다.
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/18.png)
 
-## 1. List 컬렉션
+## [1. List 컬렉션](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/List)
 
 객체를 저장하면 자동으로 인덱스가 부여되고, 인덱스로 객체를 검색, 삭제할 수 있는 기능을 제공한다
 
@@ -151,7 +151,7 @@ LinkedList에서 특정 인덱스의 객체를 제거하면 앞뒤 링크만 변
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/25.png)
 
-## 2. Set 컬렉션
+## [2. Set 컬렉션](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/set)
 
 List 컬렉션은 저장 순서를 유지하지만, Set 컬렉션은 저장 순서가 유지되지 않는다
 
@@ -233,7 +233,7 @@ ex) HashSet 사용법
     Set<E> set = new HashSet<E>();
 ```
 
-## 3. Map 컬렉션
+## [3. Map 컬렉션](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/map)
 Map 컬렉션은 키(key)와 값(value)로 구성된 Entry 객체를 저장하는 구조를 가지고 있다. Key과 value 는
 모두 객체이며 Key는 중복 저장될 수 없지만 value는 중복 저장될 수 있다
 
@@ -444,7 +444,7 @@ ex)
 
 객체의 포함 여부는 boolean 값이 true일 경우 포함한다
 
-## 4. TreeMap
+## 4.3 TreeMap
 
 이진 트리를 기반으로 한 Map 컬렉션 Map 인터페이스 타입변수에 대입해도 되지만 
 특정 객체를 찾거나 범위 검색과 관련된 메소드를 사용하기 위해서 TreeMap을 사용한다
