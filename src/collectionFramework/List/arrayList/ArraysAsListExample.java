@@ -1,5 +1,5 @@
 //초기 선언때 객체값을 넣어줄 수 있는 Arrays.asList
-package collectionFramework.List.arrayList;
+package collectionFramework.list.arrayList;
 
 import java.util.Arrays;
 import java.util.List;
