@@ -1,5 +1,5 @@
 //ArryaList와 LinkedList의 실행 성능 비교
-package collectionFramework.List.linkedList;
+package collectionFramework.list.linkedList;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
