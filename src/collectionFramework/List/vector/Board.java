@@ -1,4 +1,4 @@
-package collectionFramework.List.vector;
+package collectionFramework.list.vector;
 
 public class Board {
     String subject;

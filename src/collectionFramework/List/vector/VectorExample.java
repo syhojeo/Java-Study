@@ -1,5 +1,5 @@
 //Vector 는 멀티스레드에서 스레드안전을 제공하는 점 (synchrosized) 빼고는 ArrayList와 동일하다
-package collectionFramework.List.vector;
+package collectionFramework.list.vector;
 
 import java.util.List;
 import java.util.Vector;
