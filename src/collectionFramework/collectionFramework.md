@@ -3,6 +3,8 @@
 자료구조를 바탕으로 객체들을 효율적으로 추가, 삭제, 검색 할 수 있도록 java.util 패키지에 컬렉션과
 관련된 인터페이스와 클래스들이 포함되어있다. 이것들을 총칭한것을 **컬렉션 프레임워크**라고 한다
 
+![](https://github.com/syhojeo/Java-Study/blob/main/image/60.png)
+
 컬렉션 프레임워크의 주요 인터페이스
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/17.png)
