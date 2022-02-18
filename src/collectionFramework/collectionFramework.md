@@ -477,20 +477,20 @@ TreeSet과의 차이점은 Key와 value가 저장된 Map.Entry를 저장한다�
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/43.png)
 
-[ex) TreeMap의 검색 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/treeMap/TreeMapExample1.java)
+[ex) TreeMap의 검색 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/tree/treeMap/TreeMapExample1.java)
 
 #### 정렬 관련 메소드
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/44.png)
 
-[ex) TreeMap의 정렬 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/treeMap/TreeMapExample2.java)
+[ex) TreeMap의 정렬 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/tree/treeMap/TreeMapExample2.java)
 
 #### 범위 검색 관련 메소드
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/45.png)
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/46.png)
 
-[ex) TreeMap의 범위 검색 관련 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/treeMap/TreeMapExample3.java)
+[ex) TreeMap의 범위 검색 관련 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/tree/treeMap/TreeMapExample3.java)
 
 ## 4.4 Comparable과 Comparator
 
@@ -504,7 +504,7 @@ Integer, Double, String 타입은 모두 Comparable 인터페이스를 구현하
 
 위의 규칙에 맞게 CompareTo()를 오버라이딩 해주어야 한다
 
-[ex) Comparable 구현](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/comparableAndComparator/ComparableExample.java)
+[ex) Comparable 구현](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/tree/comparableAndComparator/ComparableExample.java)
 
 하지만 TreeSet과 TreeMap의 Key가 Comparable을 구현하고 있지 않을 경우에는 저장하는 순간 ClassCastException이
 발생한다
@@ -522,7 +522,7 @@ ex)
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/48.png)
 
-[ex) Comparator 구현](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/comparableAndComparator/ComparatorExample.java)
+[ex) Comparator 구현](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/tree/comparableAndComparator/ComparatorExample.java)
 
 ## 5. LIFO와 FIFO 컬렉션
 후입선출(LIFO: Last In First Out) 나중에 넣은 객체가 먼저 빠져나가는 구조
