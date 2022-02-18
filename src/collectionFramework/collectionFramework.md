@@ -12,7 +12,7 @@ Map의 경우 따로 정의되어 있다.
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/18.png)
 
-## [1. List 컬렉션](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/List)
+## [1. List 컬렉션](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/list)
 
 객체를 저장하면 자동으로 인덱스가 부여되고, 인덱스로 객체를 검색, 삭제할 수 있는 기능을 제공한다
 
@@ -159,7 +159,14 @@ List 컬렉션은 저장 순서를 유지하지만, Set 컬렉션은 저장 순�
 
 #### set 컬렉션 구조
 
+![](https://github.com/syhojeo/Java-Study/blob/main/image/49.png)
+1. HashSet: 순서가 필요없는 데이터를 Hashtable(Hash알고리즘의 hashtable)에 저장 Set중에 가장 성능이 좋다
+2. TreeSet: 저장된 데이터의 값에 따라 정렬됨 red-black tree 타입으로 저장되며 HashSet보다 성능이 느리다
+3. LinkedHashSet: 연결된 목롭 타입으로 구현하여 Hashtable에 데이터 저장 저장된 순서에 따라 
+값이 정렬 셋중에 가장느리다
+
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/26.png)
+
 
 #### set 컬렉션 인터페이스 메소드
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/27.png)
@@ -172,9 +179,9 @@ ex)
     set.remove("홍길동"); //객체 삭제
 ```
 
-Set 컬렉션은 인덱스로 객체를 검색해서 가져오는 get()메소드가 없다
+Set 컬렉션은 인덱스로 객체를 검색해서 가져오는 **get()메소드**가 없다
 
-대신, 전체 객체를 대상으로 한번씩 반복해서 가져오는 반복자(Iterator)를 제공한다
+대신, 전체 객체를 대상으로 한번씩 반복해서 가져오는 **반복자(Iterator)를** 제공한다
 
 ```java
     Set<String> set = ...;
@@ -197,7 +204,12 @@ Set 컬렉션은 인덱스로 객체를 검색해서 가져오는 get()메소드
 
 ### 2.1 HashSet
 
-Set 인터페이스의 구현 클래스이다 객체들을 순서 없이 저장하고, 동일한 객체는 중복 저장하지 않는다
+Set 인터페이스의 구현 클래스이다 객체들을 순서 없이 저장하고(Iterator로 읽어올 시 순서가 랜덤으로 읽어진다) 
+반면 LinkedHashSet의 경우 입력한 순서를 기억하여 저장한다
+
+[Hash 알고리즘](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/Hash.md)
+
+동일한 객체는 중복 저장하지 않는다
 
 ### HashSet 의  add() 매커니즘
 HashSet 은 Set 의 구현 인터페이스 이기 때문에 add() 할때 마다 중복되는 객체가 저장되어 있는지를 확인해야한다
@@ -464,3 +476,114 @@ TreeSet과의 차이점은 Key와 value가 저장된 Map.Entry를 저장한다�
 #### 검색 관련 메소드
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/43.png)
+
+[ex) TreeMap의 검색 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/treeMap/TreeMapExample1)
+
+#### 정렬 관련 메소드
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/44.png)
+
+[ex) TreeMap의 정렬 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/treeMap/TreeMapExample2)
+
+#### 범위 검색 관련 메소드
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/45.png)
+![](https://github.com/syhojeo/Java-Study/blob/main/image/46.png)
+
+[ex) TreeMap의 범위 검색 관련 메소드](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/treeMap/TreeMapExample3)
+
+## 4.4 Comparable과 Comparator
+
+TreeSet과 TreeMap은 정렬(자동 오름차순 binarytree)을 위해 java.lang.Comparable 구현한 객체를 요구한다
+
+Integer, Double, String 타입은 모두 Comparable 인터페이스를 구현하고 있다
+
+사용자 정의 클래스 또한 Comparable의 compareTo() 메소드를 오버라이딩하여 구현한다면 자동 정렬이 가능하다
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/47.png)
+
+위의 규칙에 맞게 CompareTo()를 오버라이딩 해주어야 한다
+
+[ex) Comparable 구현](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/comparableAndComparator/ComparableExample)
+
+하지만 TreeSet과 TreeMap의 Key가 Comparable을 구현하고 있지 않을 경우에는 저장하는 순간 ClassCastException이
+발생한다
+
+때문에 Comparable 비구현 객체를 정렬하려면 TreeSet 또는 TreeMap 생성자의 매개값으로 정렬자(Comparator)를
+제공하면 Comparable 비구현 객체도 정렬시킬 수 있다
+
+ex)
+```java
+    TreeSet<E> treeSet = new TreeSet<E>(new AscendingComparator()); //오름차순 정렬자
+    TreeMap<K, V> treeMap = new TreeMap<K, V> (new DescendingComparator()); //내림차순 정렬자
+```
+
+정렬자는 Comparator 인터페이스를 구현한 객체를 말하는데 Comparator 인터페이스에도 Compare 메소드가 정의되어 있다
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/48.png)
+
+[ex) Comparator 구현](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/comparableAndComparator/ComparatorExample)
+
+## 5. LIFO와 FIFO 컬렉션
+후입선출(LIFO: Last In First Out) 나중에 넣은 객체가 먼저 빠져나가는 구조
+
+ex) Stack - JVM 스택 메모리
+
+선입선출(FIFO: First In First Out) 먼저 넣은 객체가 먼저 빠져나가는 구조
+
+ex) Queue - 스레드풀의 작업 큐
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/56.png)
+
+## 5.1 Stack
+Stack 클래스의 주요 메소드
+![](https://github.com/syhojeo/Java-Study/blob/main/image/57.png)
+
+```Java
+    Stack<E> stack = new Stack<E>();
+```
+[ex) Stack 구현](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/stackAndQueue/StackExample)
+
+## 5.2 Queue
+Queue 인터페이스의 주요 메소드
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/58.png)
+
+Queue 인터페이스를 구현한 대표적인 클래스는 LinkedList이다 다음은 LinkedList객체를 Queue 인터페이스 타입으로
+변환한 것이다 LinkedList는 List 인터페이스를 구현했기 대문에 List 컬렉션이기도 하다
+
+```java
+    Queue<E> queue = new LinkedList<E>();
+```
+
+[ex) LinkedList의 Queue 처럼 사용하기](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/stackAndQueue/QueueExample)
+
+## 동기화된 컬렉션
+컬렉션 프레임워크의 대부분의 클래스들은 싱글 스레드 환경에서 사용할 수 있도록 설계되었다. 때문에 Vector와 Hashtable
+같이 동기화된 메소드로 구성되지 않은 ArrayList, HashSet, HashMap은 멀티스레드 환경에서 안전하지 않다
+
+컬렉션 프레임워크는 비동기화된 메소드를 동기화된 메소드로 래핑하는 Collections 의 synchronizedXXX() 메소드를 제공
+하고 있다 매개값으로 비동기화된 컬렉션을 대입하면 동기화된 컬렉션을 리턴한다
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/59.png)
+
+ex) 비동기화 컬레션 동기화하는 법
+```java
+    List<T> list = Collections.synchronizedList(new ArrayList<T>());
+    Set<E> set = Collections.synchronizedSet(new HashSet<E>());
+    Map<K, V> map = Collections.synchronizedMap(new HashMap<K, V>());
+```
+
+## 병렬 처리를 위한 컬렉션
+
+동기화된 컬렉션은 멀티스레드 환경에서 요스를 안전하게 처리하도록 도와주지만 빠르게 처리하지는 못한다 
+때문에 요소를 병렬적으로 처리할 수 있는 컬렉션을 제공한다
+
+java.util.concurrent 패키지의 ConcurrentHashMap(Map 구현 클래스)과 
+ConcurrentLinkedQueue(Queue 구현 클래스) 이다
+
+ex) 사용법
+```java
+    Map<K, V> map = new ConcurrentHashMap<K, V>();
+    Queue<E> queue = new ConcurrentLinkedQueue<E>();
+```
