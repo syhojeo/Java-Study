@@ -589,3 +589,60 @@ ex) 사용법
     Map<K, V> map = new ConcurrentHashMap<K, V>();
     Queue<E> queue = new ConcurrentLinkedQueue<E>();
 ```
+
+## 몇가지 궁금점
+
+### Comparable 자동 정렬이 되는이유
+
+Array.sort 등 정렬을 사용하는 함수에서 CompareTo 가 디폴트로 자동 실행되어 정렬이된다
+
+즉 정렬을하는 알고리즘을 가진 TreeSet TreeMap 또한 add시 이진 트리로 정렬되는데 이때 
+CompareTo 가 오버라이딩 되어있다면 이진 트리로 정렬되는게 아닌 디폴트 정렬 메소드인
+CompareTO가 실행되어 자동 정렬이 되는것이다
+
+### TreeMap TreeSet이 오름차순으로 자동정렬되어도 Comparable을 사용하는 이유
+
+Integer, Double, String 들은 정렬이 가능하지만 사용자 정의 객체 
+ex) Student, Person등은 기본정렬(CompareTo)가 있어야 정렬이 가능하기 때문 (equals를 오버라이딩 해야하는 이유와 같다)
+
+### Iterator 를 사용하는 이유
+
+집합체를 다룰때는 개별적인 클래스에 대해 데이터를 읽는 방법을 알아야 하기 때문에 각 컬렉션에 접근이 힘들어진다 
+Iterator 를 쓰게 되면 어떤 컬렉션이라도 동일한 방식으로 접근이 가능하여 그안에 있는 항목들에 접근할 수 있는 
+방법을 제공한다(다형성)
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/61.png)
+
+Iterator 는 컬렉션이 상속하는 인터페이스로써 모든 컬렉션 프레임워크에서 Iterator를 이용하여 반복할 수 있게 만들어준다
+
+## Iterator 와 반복문의 차이 (LinkedList)
+
+```java
+    public void linkedListTest() {
+        LinkedLIst<Integer> list = new LinkedLIst<Integer>();
+        for (int i = 0; i <= 100; i ++) {
+            list.add(i);    
+        }
+        for (int i = 0; i <= 100; i++) {
+            list.get(i);    
+        }
+    }
+```
+
+![](https://github.com/syhojeo/Java-Study/blob/main/image/62.png)
+
+### for문
+위의 코드같이 add 후 포문을 이용하여 0 ~ 100까지의 101가지 요소를 모두 조회하게 되는데 이는 단순히 101번 조회를
+하는 메커니즘을 가지고 있지 않다
+
+LinkedList에서 첫번째 요소를 조회하려면 1번(0), 두번째요소를 조회하려면 2번(0,1), 세번째 요소를 조회하려면
+3번(0, 1, 2) 로 1 ~ 3번 요소까지 조회하려면 3회가 아닌 6회(1 + 2 + 3)이 된다
+
+### Iterator
+반대로 Iterator 반복문을 사용하는 경우 1번부터 101번째까지 요소에 대해 내부적으로 객체를 생성한 후 순차적으로 조회하기
+때문에 next 메서드를 통해서 요소의 개수인 101번만 조회하게 된다
+
+#### 결론
+다만 속도의 면에서 Iterator 더 빠를 수 있다고 생각할 수 있지만 Iterator를 구현하기 위해 객체를 생성하는
+부분에서 시간이 더 걸린다고 한다. 때문에 Iterator가 반복문 보다 속도가 느린 대신에 사용법이 쉽고, 다형성면에서
+장점이 있는 방법이라고 정리할 수 있겠다
