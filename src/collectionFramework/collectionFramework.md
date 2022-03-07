@@ -205,6 +205,11 @@ Set 컬렉션은 인덱스로 객체를 검색해서 가져오는 **get()메소�
 ```
 
 ### 2.1 HashSet
+### 개념정리
+HashSet은 HashMap으로 구현된다?
+https://st-lab.tistory.com/238
+https://st-lab.tistory.com/240
+
 
 Set 인터페이스의 구현 클래스이다 객체들을 순서 없이 저장하고(Iterator로 읽어올 시 순서가 랜덤으로 읽어진다) 
 반면 LinkedHashSet의 경우 입력한 순서를 기억하여 저장한다
@@ -328,6 +333,7 @@ HashMap 생성
 **키와 값은 기본타입(boolean, char, int .. )을 사용할 수 없고, 클래스 및 인터페이스 타입만 가능하다
 (String, Integer ...)**
 
+[ex) Collections.sort를 이용한 value값 기준 내림차순 정렬](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/tree/comparableAndComparator/ComparatorExample.java)
 ## 3.2 Hashtable
 
 Hashtable은 HashMap과 동일한 내부 구조를 가지고 있다 Hashtable 또한 HashMap과 같이 hashCode(), equals()
