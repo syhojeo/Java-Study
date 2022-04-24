@@ -14,7 +14,7 @@ Map의 경우 따로 정의되어 있다.
 
 ![](https://github.com/syhojeo/Java-Study/blob/main/image/18.png)
 
-## [1. List 컬렉션](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/list)
+## [1. List 컬렉션](https://github.com/syhojeo/Java-Study/tree/main/src/collectionFramework/List)
 
 객체를 저장하면 자동으로 인덱스가 부여되고, 인덱스로 객체를 검색, 삭제할 수 있는 기능을 제공한다
 
